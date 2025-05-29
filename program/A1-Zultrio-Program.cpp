@@ -285,11 +285,9 @@ void beliTiketAdmin() {
             cout << "Nama pembeli: ";
             getline(cin, NamaPembeli);
             if (NamaPembeli.length() < 3) {
-                system("cls");
                 cout << "Nama Minimal 3 Karakter" << endl;
             }
             else if (NamaPembeli.find_first_not_of(' ') == string::npos) {
-                system("cls");
                 cout << "Nama Tidak Boleh Kosong atau Hanya Spasi!" << endl;
             }
             else {
@@ -562,7 +560,6 @@ void ubahTiket() {
         cin >> konfirmasi;
         if (konfirmasi != "Y" && konfirmasi != "y" && konfirmasi != "T" && konfirmasi != "t") {
             if (konfirmasi.length() > 1);
-            system("cls");
             cout << "Input tidak valid!" << endl;
         }
         else if (konfirmasi == "Y" || konfirmasi == "y") {
@@ -648,7 +645,7 @@ void ubahTiket() {
             cin.ignore();
             if (inputKausKaki != "Y" && inputKausKaki != "y" && inputKausKaki != "T" && inputKausKaki != "t") {
                 if (inputKausKaki.length() > 1);
-                cout << "Input kaus kaki tidak valid!" << endl;
+                cout << "Input tidak valid!" << endl;
             }
             else {
                 break;
@@ -733,8 +730,7 @@ void hapusTiket() {
         cin >> konfirmasi;
         if (konfirmasi != "Y" && konfirmasi != "y" && konfirmasi != "T" && konfirmasi != "t") {
             if (konfirmasi.length() > 1);
-            system("cls");
-            cout << "Input kaus kaki tidak valid!" << endl;
+            cout << "Input tidak valid!" << endl;
         }
         else if (konfirmasi == "Y" || konfirmasi == "y") {
             for (int i = index; i < jumlahTiket - 1; i++) {
@@ -901,6 +897,7 @@ void hapusUser () {
     cin.ignore();
     getline(cin, username);
     if (username == "0") {
+        system("cls");
         return;
     }
     for (int i = 0; i < jumlahUser ; i++) {
@@ -910,10 +907,10 @@ void hapusUser () {
             cout << "Username: " << daftarUser [i].username << endl;
             cout << "Role: " << daftarUser [i].role << endl;
             
-            char konfirmasi;
+            string konfirmasi;
             cout << "Apakah Anda yakin ingin menghapus user ini? (Y/y untuk Ya, T/t untuk Tidak): ";
             cin >> konfirmasi;
-            if (konfirmasi == 'Y' || konfirmasi == 'y') {
+            if (konfirmasi == "Y" || konfirmasi == "y") {
                 for (int j = i; j < jumlahUser  - 1; j++) {
                     daftarUser [j] = daftarUser [j + 1];
                 }
@@ -925,8 +922,17 @@ void hapusUser () {
                 saveUserFile();
                 system("cls");
                 return;
-            } else {
+            } 
+            else if (konfirmasi == "T" || konfirmasi == "t") {
                 cout << "Penghapusan dibatalkan." << endl;
+                cout << "Tekan ENTER untuk melanjutkan....";
+                cin.ignore();
+                cin.get();
+                system("cls");
+                return;
+            }
+            else {
+                cout << "Input Tidak Valid" << endl;
                 cout << "Tekan ENTER untuk melanjutkan....";
                 cin.ignore();
                 cin.get();
