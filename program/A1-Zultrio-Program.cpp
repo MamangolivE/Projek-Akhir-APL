@@ -923,6 +923,7 @@ void hapusUser () {
                 cin.ignore();
                 cin.get();
                 saveUserFile();
+                system("cls");
                 return;
             } else {
                 cout << "Penghapusan dibatalkan." << endl;
@@ -1267,11 +1268,13 @@ void tampilkanTiketUser(const User& userLogin) {
             << setw(15) << daftarTiket[i].status << endl;
         }
     }
-    cout << "Tekan ENTER untuk melanjutkan....";
-    cin.ignore();
-    cin.get();
     if (!found) {
         cout << "Tidak ada tiket yang dipesan oleh " << userLogin.username << "." << endl;
+        cout << "Tekan ENTER untuk melanjutkan....";
+        cin.ignore();
+        cin.get();
+    }
+    else {
         cout << "Tekan ENTER untuk melanjutkan....";
         cin.ignore();
         cin.get();
